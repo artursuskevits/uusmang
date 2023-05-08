@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace uusmang
 {
-    internal class VertikalLines
+    internal class VertikalLines:Figure
     {
-        List<Point> plist;
+        
 
         public VertikalLines(int xhigh, int xlow, int y, char sym)
         {
@@ -19,12 +19,6 @@ namespace uusmang
                 plist.Add(p);
             }
         }
-        public void Drow()
-        {
-            foreach (Point p in plist)
-            {
-                p.Draw();
-            }
-        }
+         
     }
 }

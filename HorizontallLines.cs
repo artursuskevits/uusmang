@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace uusmang
 {
-    internal class HorizontallLines
+    internal class HorizontallLines : Figure
     {
-        List<Point> plist;
-
+         
         public HorizontallLines(int xleft, int xright, int y, char sym)
         {
             plist = new List<Point>();
@@ -19,12 +18,6 @@ namespace uusmang
                 plist.Add(p);
             }
         }
-        public void Drow()
-        {
-            foreach (Point p in plist)
-            {
-                p.Draw();
-            }
-        }
+
     }
 }

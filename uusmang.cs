@@ -14,6 +14,17 @@ namespace uusmang
     {
         public static void Main(string[] args)
         {
+            
+            Console.SetWindowSize(80, 25); 
+            HorizontallLines upline = new HorizontallLines(0, 8, 0, '+');
+            upline.Drow();
+            HorizontallLines downline = new HorizontallLines(0, 78, 24, '+');
+            downline.Drow();
+            VertikalLines leftline = new VertikalLines(0, 24, 0, '+');
+            leftline.Drow();
+            VertikalLines rightline = new VertikalLines(0, 24, 78, '+');
+            rightline.Drow();
+
             Point p1 = new Point(1, 3, '*');
             p1.Draw();
            
@@ -23,13 +34,7 @@ namespace uusmang
             Point p2 = new Point(4, 5, '#');
             p2.Draw();
 
-            HorizontallLines line = new HorizontallLines(5, 10, 8, '+');
-            line.Drow();
-
             
-            VertikalLines vline = new VertikalLines(5, 10, 0, '+');
-            vline.Drow();
-
 
 
         }
