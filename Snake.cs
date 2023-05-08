@@ -38,7 +38,7 @@ namespace uusmang
             nextPoint.Move(1, direction);
             return nextPoint;
         }
-        public void HandleKey(ConsoleKey key) 
+        public void HandleeKey(ConsoleKey key) 
         {
             if (key == ConsoleKey.LeftArrow)
                 direction = Direction.LEFT;
