@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace uusmang
 {
-    internal class HorizontallLines
+    internal class VertikalLines
     {
         List<Point> plist;
 
-        public HorizontallLines(int xleft, int xright, int y, char sym)
+        public VertikalLines(int xhigh, int xlow, int y, char sym)
         {
             plist = new List<Point>();
-            for (int x = xleft; x < xright; x++)
+            for (int x = xhigh; x < xlow; x++)
             {
-                Point p = new Point(x, y, sym);
+                Point p = new Point(y, x, sym);
                 plist.Add(p);
             }
         }
