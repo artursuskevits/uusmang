@@ -32,17 +32,16 @@ namespace uusmang
             snake.Drow();
             
             snake.Move();
-            Thread.Sleep(1000);
-            snake.Move();
-            Thread.Sleep(1000);
-            snake.Move();
-            Thread.Sleep(1000);
-            snake.Move();
-            Thread.Sleep(1000);
-            snake.Move();
-            Thread.Sleep(1000);
-            Console.ReadLine();
-
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(50);
+                snake.Move();
+            }
 
 
         }

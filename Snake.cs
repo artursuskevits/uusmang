@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace uusmang
 {
     internal class Snake:Figure
     {
-        Direction direction;
+        public Direction direction;
         public Snake(Point tall, int lenght, Direction derection)
         {
             direction= derection;
@@ -36,6 +37,17 @@ namespace uusmang
             Point nextPoint = new Point(head);
             nextPoint.Move(1, direction);
             return nextPoint;
+        }
+        public void HandleKey(ConsoleKey key) 
+        {
+            if (key == ConsoleKey.LeftArrow)
+                direction = Direction.LEFT;
+            else if (key == ConsoleKey.RightArrow)
+                direction = Direction.RIGHT;
+            else if (key== ConsoleKey.DownArrow)
+                direction = Direction.DOWN;
+            else if (key == ConsoleKey.UpArrow)
+                direction = Direction.UP;
         }
     }
 }
