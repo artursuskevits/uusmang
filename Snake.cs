@@ -11,10 +11,10 @@ namespace uusmang
         public Snake(Point tall, int lenght, Direction derection)
         {
             plist = new List<Point>();
-            for (int i = 0; i < lenght; i++)
+            for (int n = 0; n < lenght; n++)
             {
                 Point p = new Point(tall);
-                p.Move(i, derection);
+                p.Move(n, derection);
                 plist.Add(p);   
             }
         }
