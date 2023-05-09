@@ -1,4 +1,5 @@
-﻿ 
+﻿
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,9 +32,22 @@ namespace uusmang
             Snake snake = new Snake(p1, 4, Direction.RIGHT);
             snake.Drow();
             
-            snake.Move();
+            FoodCreator foodCreator = new FoodCreator(80,25,'$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while (true)
             {
+                if (snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+                Thread.Sleep(50);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
@@ -42,9 +56,8 @@ namespace uusmang
                 Thread.Sleep(50);
                 snake.Move();
             }
-
-
         }
+                
 
     }
 }

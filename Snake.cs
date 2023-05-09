@@ -49,5 +49,20 @@ namespace uusmang
             else if (key == ConsoleKey.UpArrow)
                 direction = Direction.UP;
         }
+
+        internal bool Eat (Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                plist.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
