@@ -56,6 +56,7 @@ namespace uusmang
             Point head = GetNextPoint();
             if (head.IsHit(food))
             {
+                Console.WriteLine();
                 food.sym = head.sym;
                 plist.Add(food);
                 return true;

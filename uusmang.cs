@@ -17,6 +17,7 @@ namespace uusmang
         public static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.SetWindowSize(80, 25); 
             Walls walls = new Walls(80,25);
             walls.Draw();
@@ -53,7 +54,10 @@ namespace uusmang
                 {
                     snake.Move();
                 }
-                Thread.Sleep(50); 
+                Thread.Sleep(100);
+                
+                
+                
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
