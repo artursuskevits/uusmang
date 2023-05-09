@@ -16,8 +16,10 @@ namespace uusmang
     {
         public static void Main(string[] args)
         {
-            
+            Console.BackgroundColor = ConsoleColor.White;
             Console.SetWindowSize(80, 25); 
+            Walls walls = new Walls(80,25);
+            walls.Draw();
             Console.Clear();
             HorizontallLines upline = new HorizontallLines(0, 78, 0, '+');
             upline.Drow(); 
@@ -38,6 +40,10 @@ namespace uusmang
 
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -47,7 +53,7 @@ namespace uusmang
                 {
                     snake.Move();
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(50); 
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();

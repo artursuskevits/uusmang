@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -63,6 +64,18 @@ namespace uusmang
             {
                 return false;
             }
+        }
+        internal bool IsHitTail()
+        {
+            var head = plist.Last();
+            for (int i = 0; i < plist.Count-2; i++)
+            {
+                if (head.IsHit(plist[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
