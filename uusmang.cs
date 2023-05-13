@@ -18,24 +18,15 @@ namespace uusmang
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.SetWindowSize(80, 25); 
-            Walls walls = new Walls(80,25);
-            walls.Draw();
+            Console.SetWindowSize(80, 25);
             Console.Clear();
-            HorizontallLines upline = new HorizontallLines(0, 78, 0, '+');
-            upline.Drow(); 
-            HorizontallLines downline = new HorizontallLines(0, 78, 24, '+');
-            downline.Drow();
-            VertikalLines leftline = new VertikalLines(0, 24, 0, '+');
-            leftline.Drow();
-            VertikalLines rightline = new VertikalLines(0, 24, 78, '+');
-            rightline.Drow();
-
-            Point p1 = new Point(4, 5, '*');
-            Snake snake = new Snake(p1, 4, Direction.RIGHT);
+            Walls walls = new Walls(80, 25);
+            walls.Draw();		
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drow();
-            
-            FoodCreator foodCreator = new FoodCreator(80,25,'$');
+
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
@@ -54,20 +45,16 @@ namespace uusmang
                 {
                     snake.Move();
                 }
+
                 Thread.Sleep(100);
-                
-                
-                
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleeKey(key.Key);
                 }
-                Thread.Sleep(50);
-                snake.Move();
             }
         }
-                
+        
 
     }
 }
