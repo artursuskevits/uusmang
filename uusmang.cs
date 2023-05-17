@@ -67,7 +67,7 @@ namespace uusmang
                     snake.Move();
                 }
 
-                Thread.Sleep(100);
+                Thread.Sleep(90);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();

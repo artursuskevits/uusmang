@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,21 +62,22 @@ namespace uusmang
 
         public void ShowLeaderboard(Dictionary<string, int> esimine)
         {
-            var sesimine = from entry in esimine orderby entry.Value ascending select entry;
-            for (int i = 0; i < 5; i++)
-            {
-                int max = 0;
-                foreach (KeyValuePair<string, int> element in sesimine)
+            int i = 0;
+            var sortedDictionary = esimine.OrderByDescending(x => x.Value);
+            Console.WriteLine("LEADERBORAD :");
+                foreach (var item in sortedDictionary)
                 {
-                    int zizha = element.Value;
-                    if (zizha > max)
-                    {
-                        max = element.Value;
-                    }
+                i += 1;
+                if (i<11)
+                {
+                    Console.WriteLine(i + "." + item.Key + ": " + item.Value);
+                }
+                else 
+                {
+                    Console.WriteLine("");
+                    break;
                 }
             }
-            
-            
         }
     }
 }
