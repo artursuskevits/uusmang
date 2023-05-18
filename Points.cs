@@ -55,8 +55,7 @@ namespace uusmang
                     }
                 }
 
-                Console.WriteLine("Data saved to file.");
-                Console.ReadLine();
+               
             }
         }
 

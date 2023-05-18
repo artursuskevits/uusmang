@@ -17,8 +17,10 @@ namespace uusmang
         public static void Main(string[] args)
         {
             Console.Clear();
+            int speed = 100;
             Dictionary<string, int>  Usersdict = new Dictionary<string, int>();
             Points pointsObject = new Points();
+            Speed speedObject = new Speed();
             pointsObject.ReadToFile(Usersdict);
             pointsObject.ShowLeaderboard(Usersdict);
             Console.WriteLine("Write your nickname");
@@ -66,8 +68,11 @@ namespace uusmang
                 {
                     snake.Move();
                 }
-
-                Thread.Sleep(90);
+                if (pointcounter % 5==0)
+                {
+                    speedObject.Speedchange(speed);
+                }
+                Thread.Sleep(speed);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
