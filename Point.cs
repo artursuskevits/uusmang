@@ -52,6 +52,18 @@ namespace uusmang
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
+
+        }
+        public void DrawC(string color)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(sym);
+            ConsoleColor consoleColor;
+            if (Enum.TryParse(color, out consoleColor))
+            {
+                Console.ForegroundColor = consoleColor;
+            }
+
         }
 
         public override string ToString()

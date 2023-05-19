@@ -8,7 +8,7 @@ namespace uusmang
 {
     internal class FoodCreator
     {
-        int mapWidth;
+        int mapWidth; 
         int mapHeight;
         char sym;
 
@@ -19,12 +19,14 @@ namespace uusmang
             this.mapHeight = mapHeight;
             this.sym = sym;
         }
-        public Point CreateFood()
+        public Point CreateFood(string color)
         {
             int x = random.Next(2,mapWidth-2);
             int y = random.Next(2,mapHeight-2);
-            char sym ='$';
+            Console.ForegroundColor = ConsoleColor.Black; 
+            char sym = '$';
             return new Point(x, y, sym);
+            
         }
     }
     

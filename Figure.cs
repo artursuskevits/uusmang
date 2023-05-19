@@ -16,6 +16,18 @@ namespace uusmang
                 p.Draw();
             }
         }
+        public void DrowCol(string color)
+        {
+            foreach (Point p in plist)
+            {
+                ConsoleColor consoleColor;
+                if (Enum.TryParse(color, out consoleColor))
+                {
+                    Console.ForegroundColor = consoleColor;
+                }
+                p.Draw();
+            }
+        }
         internal bool IsHit(Figure figure)
 
         {

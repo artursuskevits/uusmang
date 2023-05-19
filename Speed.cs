@@ -10,7 +10,7 @@ namespace uusmang
     {
         public int Speedchange(int speednow)
         {
-            if (speednow>9)
+            if (speednow!=10)
             {
                 speednow = speednow - 10;
             }

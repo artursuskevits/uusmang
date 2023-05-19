@@ -11,7 +11,7 @@ namespace uusmang
     internal class Snake:Figure
     {
         public Direction direction;
-        public Snake(Point tall, int lenght, Direction derection)
+        public Snake(Point tall, int lenght, Direction derection, string color)
         {
             direction= derection;
             plist = new List<Point>();
@@ -19,18 +19,24 @@ namespace uusmang
             {
                 Point p = new Point(tall);
                 p.Move(n, derection);
-                plist.Add(p);   
+                plist.Add(p);
+                ConsoleColor consoleColor;
+                if (Enum.TryParse(color, out consoleColor))
+                {
+                    Console.ForegroundColor = consoleColor;
+                }
             }
+            
         }
 
-        public void Move()
+        public void Move(string color)
         {
             Point tail = plist.First();
             plist.Remove(tail);
             Point head = GetNextPoint();
             plist.Add(head);
             tail.Clear();
-            head.Draw();
+            head.DrawC(color);
         }
         public Point GetNextPoint()
         {
