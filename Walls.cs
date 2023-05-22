@@ -13,10 +13,11 @@ namespace uusmang
 
         {
             wallist = new List<Figure>();
-            HorizontallLines upline = new HorizontallLines(0, 78, 0, '+');
+            Console.ForegroundColor= ConsoleColor.Black;    
+            HorizontallLines upline = new HorizontallLines(0, 78, 1, '+');
             HorizontallLines downline = new HorizontallLines(0, 78, 24, '+');
             VertikalLines leftline = new VertikalLines(0, 24, 0, '+');
-            VertikalLines rightline = new VertikalLines(0, 24, 78, '+');
+            VertikalLines rightline = new VertikalLines(1, 24, 78, '+');
             wallist.Add(upline);
             wallist.Add(downline);
             wallist.Add(leftline);

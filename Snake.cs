@@ -84,5 +84,18 @@ namespace uusmang
             }
             return false;
         }
+        internal bool SlowEat(Point food,int speed)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                speed = speed / 2;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

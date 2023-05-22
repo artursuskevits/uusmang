@@ -59,7 +59,7 @@ namespace uusmang
             }
         }
 
-        public void ShowLeaderboard(Dictionary<string, int> esimine)
+        public void ShowLeaderboard10(Dictionary<string, int> esimine)
         {
             int i = 0;
             var sortedDictionary = esimine.OrderByDescending(x => x.Value);
@@ -77,6 +77,24 @@ namespace uusmang
                     break;
                 }
             }
+        }
+        public void ShowLeaderboard(Dictionary<string, int> esimine)
+        {
+            int i = 0;
+            var sortedDictionary = esimine.OrderByDescending(x => x.Value);
+            Console.WriteLine("FULL LEADERBORAD :");
+            foreach (var item in sortedDictionary)
+            {
+                i++;
+                Console.WriteLine(i + "." + item.Key + ": " + item.Value);
+            }
+        }
+
+        public void ShowPointsOnDisplay(int key, int value)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor= ConsoleColor.Black;
+            Console.WriteLine("Points = {0}   Speed={1} ", key, value);
         }
     }
 }
