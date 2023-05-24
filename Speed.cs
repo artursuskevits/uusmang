@@ -8,13 +8,14 @@ namespace uusmang
 {
     public class Speed
     {
-        public int Speedchange(int speednow)
+        public (int,int) Speedchange(int speednow,int oldspeed)
         {
             if (speednow!=10)
             {
                 speednow = speednow - 10;
+                oldspeed = oldspeed - 10;
             }
-            return speednow; 
+            return (speednow, oldspeed);
         }
         
     }

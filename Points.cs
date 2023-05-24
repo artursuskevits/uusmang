@@ -18,11 +18,11 @@ namespace uusmang
         }
         public Points()
         {
-            
-            
+
+
         }
 
-        public void AddToDictionary(Dictionary<string, int> esimine,string key, int value)
+        public void AddToDictionary(Dictionary<string, int> esimine, string key, int value)
         {
             esimine[key] = value;
         }
@@ -36,7 +36,7 @@ namespace uusmang
                 {
                     string[] parts = line.Split('-');
                     string key = parts[0];
-                    int value = int.Parse(parts[1]); 
+                    int value = int.Parse(parts[1]);
 
                     esimine.Add(key, value);
                 }
@@ -55,7 +55,7 @@ namespace uusmang
                     }
                 }
 
-               
+
             }
         }
 
@@ -63,15 +63,25 @@ namespace uusmang
         {
             int i = 0;
             var sortedDictionary = esimine.OrderByDescending(x => x.Value);
+            Console.SetCursorPosition(17, 19);
             Console.WriteLine("LEADERBORAD :");
-                foreach (var item in sortedDictionary)
+            foreach (var item in sortedDictionary)
+            {
+
+                int length = item.Key.Length;
+                string tochki = "";
+                int howmuchtochki = 20 - length;
+                for (int jj = 0; jj < howmuchtochki; jj++)
                 {
-                i += 1;
-                if (i<11)
-                {
-                    Console.WriteLine(i + "." + item.Key + ": " + item.Value);
+                    tochki += ".";
                 }
-                else 
+                i += 1;
+                if (i < 11)
+                {
+                    Console.SetCursorPosition(10, 19+i);
+                    Console.WriteLine(i + "." + item.Key + tochki + item.Value);
+                }
+                else
                 {
                     Console.WriteLine("");
                     break;
@@ -82,22 +92,55 @@ namespace uusmang
         {
             int i = 0;
             var sortedDictionary = esimine.OrderByDescending(x => x.Value);
+            Console.SetCursorPosition(15, 3);
             Console.WriteLine("FULL LEADERBORAD :");
             foreach (var item in sortedDictionary)
             {
                 i++;
-                Console.WriteLine(i + "." + item.Key + ": " + item.Value);
+                int length = item.Key.Length;
+                string tochki = "";
+                int howmuchtochki = 20 - length;
+                for (int jj = 0; jj < howmuchtochki; jj++)
+                {
+                    tochki += ".";
+                }
+                Console.SetCursorPosition(10, 3+i);
+                Console.WriteLine(i + "." + item.Key + tochki + item.Value);
             }
         }
 
         public void ShowPointsOnDisplay(int key, int value)
         {
             Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor= ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("Points = {0}   Speed={1} ", key, value);
         }
-    }
-}
+
+        public string NicknameCreation()
+        {
+            try
+            {
+                Console.WriteLine("Write Nickname");
+                string nickname = Console.ReadLine();
+
+                if (nickname.Length < 20)
+                {
+                    return nickname;
+                }
+                else
+                {
+                    throw new Exception("More than 20 letters");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("You ncikname is Anonim");
+                string nickname;
+                nickname = "anonioim";
+                return nickname; 
+            }
+        }
+    } }
 
     
 

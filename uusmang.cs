@@ -20,6 +20,8 @@ namespace uusmang
             Console.SetWindowSize(80, 25);
             Console.Clear();
             int speed = 100;
+            int oldspeed;
+            oldspeed = speed;
             Dictionary<string, int>  Usersdict = new Dictionary<string, int>();
             Endscreen endscreenObject= new Endscreen();
             Points pointsObject = new Points();
@@ -28,8 +30,7 @@ namespace uusmang
             string color = colorObject.ChooseColor();
             pointsObject.ReadToFile(Usersdict);
             pointsObject.ShowLeaderboard10(Usersdict);
-            Console.WriteLine("Write your nickname");
-            string nickname = Console.ReadLine();
+            string nickname = pointsObject.NicknameCreation();
             for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine("Game start in {0}", 3-i);
@@ -47,6 +48,7 @@ namespace uusmang
             snake.DrowCol(color);
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
+            Point slowfood = new Point (4, 5, '*');
             food.Draw();
             pointsObject.ShowPointsOnDisplay(pointcounter, speed);
 
@@ -68,22 +70,35 @@ namespace uusmang
                     pointsObject.ShowPointsOnDisplay(pointcounter, speed);
                     food = foodCreator.CreateFood();
                     food.Draw();
+                    speed = oldspeed;
+                    pointsObject.ShowPointsOnDisplay(pointcounter, speed);
                     int chance = foodCreator.SpawnChance();
                     if (chance == 5)
                     {
-                        Point slowfood = foodCreator.CraeteSlowFood();
+                        slowfood = foodCreator.CraeteSlowFood();
                         slowfood.Draw();
                             } 
                 }
+
                 else
                 {
                     snake.Move(color);
                 }
+
+
+                if(snake.SlowEatBool(slowfood))
+                {
+                    _ = mainmusic.Natukene_mangida("../../../eatsound.mp3");
+                    (speed,  oldspeed )= snake.SlowEat(speed);
+                    Console.WriteLine(speed);
+                    pointsObject.ShowPointsOnDisplay(pointcounter, speed);
+                }
+
                 if (pointcounter % 5==0 && pointcounter > 0)
                 {
                     if (speed!= 100-(pointcounter /5 *10))
                     {
-                        speed = speedObject.Speedchange(speed);
+                        (speed,oldspeed) = speedObject.Speedchange(speed, oldspeed);
                         pointsObject.ShowPointsOnDisplay(pointcounter, speed);
                     }
                     

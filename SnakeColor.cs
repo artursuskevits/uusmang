@@ -30,6 +30,8 @@ namespace uusmang
 
         public string ChooseColor()
         {
+            try
+            { 
             Console.WriteLine();
             int count = 0;
             Console.WriteLine("Choose snake color");
@@ -52,6 +54,13 @@ namespace uusmang
             {
                 string snakecolor = colors[UserChoice - 1];
                 Console.WriteLine(snakecolor);
+                return snakecolor;
+            }
+            }
+            catch {
+                Console.WriteLine("Wrong, you play with yellow color");
+                string snakecolor;
+                snakecolor = "Yellow";
                 return snakecolor;
             }
         }

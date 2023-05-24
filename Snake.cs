@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -8,12 +9,12 @@ using System.Xml.Linq;
 
 namespace uusmang
 {
-    internal class Snake:Figure
+    internal class Snake : Figure
     {
         public Direction direction;
         public Snake(Point tall, int lenght, Direction derection, string color)
         {
-            direction= derection;
+            direction = derection;
             plist = new List<Point>();
             for (int n = 0; n < lenght; n++)
             {
@@ -26,7 +27,7 @@ namespace uusmang
                     Console.ForegroundColor = consoleColor;
                 }
             }
-            
+
         }
 
         public void Move(string color)
@@ -45,19 +46,44 @@ namespace uusmang
             nextPoint.Move(1, direction);
             return nextPoint;
         }
-        public void HandleeKey(ConsoleKey key) 
+        public void HandleeKey(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
                 direction = Direction.LEFT;
             else if (key == ConsoleKey.RightArrow)
                 direction = Direction.RIGHT;
-            else if (key== ConsoleKey.DownArrow)
+            else if (key == ConsoleKey.DownArrow)
                 direction = Direction.DOWN;
             else if (key == ConsoleKey.UpArrow)
                 direction = Direction.UP;
         }
 
-        internal bool Eat (Point food)
+
+        internal bool IsHitTail()
+        {
+            var head = plist.Last();
+            for (int i = 0; i < plist.Count - 2; i++)
+            {
+                if (head.IsHit(plist[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        internal (int,int) SlowEat(int speed)
+        {
+
+            Point head = GetNextPoint();
+            int oldspeed;
+            oldspeed = speed;
+            speed = speed * 2;
+
+            return (speed, oldspeed);
+
+
+        }
+        internal bool Eat(Point food)
         {
             Point head = GetNextPoint();
             if (head.IsHit(food))
@@ -72,24 +98,11 @@ namespace uusmang
                 return false;
             }
         }
-        internal bool IsHitTail()
-        {
-            var head = plist.Last();
-            for (int i = 0; i < plist.Count-2; i++)
-            {
-                if (head.IsHit(plist[i]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        internal bool SlowEat(Point food,int speed)
+        internal bool SlowEatBool(Point food)
         {
             Point head = GetNextPoint();
             if (head.IsHit(food))
             {
-                speed = speed / 2;
                 return true;
             }
             else

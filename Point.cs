@@ -52,7 +52,6 @@ namespace uusmang
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
-
         }
         public void DrawC(string color)
         {

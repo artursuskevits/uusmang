@@ -40,7 +40,6 @@ namespace uusmang
         public int SpawnChance()
         {
             int randnumber = random.Next(1,6);
-            Console.WriteLine(randnumber);
             return randnumber;
         }
     }
