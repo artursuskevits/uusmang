@@ -93,7 +93,7 @@ namespace uusmang
             int i = 0;
             var sortedDictionary = esimine.OrderByDescending(x => x.Value);
             Console.SetCursorPosition(15, 3);
-            Console.WriteLine("FULL LEADERBORAD :");
+            Console.WriteLine("FULL LEADERBORAD:");
             foreach (var item in sortedDictionary)
             {
                 i++;

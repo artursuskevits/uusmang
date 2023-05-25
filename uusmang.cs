@@ -49,6 +49,7 @@ namespace uusmang
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             Point slowfood = new Point (4, 5, '*');
+            Point dangerfood = new Point(4, 5, '*');
             food.Draw();
             pointsObject.ShowPointsOnDisplay(pointcounter, speed);
 
@@ -72,12 +73,20 @@ namespace uusmang
                     food.Draw();
                     speed = oldspeed;
                     pointsObject.ShowPointsOnDisplay(pointcounter, speed);
-                    int chance = foodCreator.SpawnChance();
-                    if (chance == 5)
+                    int slowfoodchance = foodCreator.SlowFoodSpawnChance();
+                    int dangerfoodchance = foodCreator.DangerFoodSpawnChance();
+                    Console.WriteLine(dangerfoodchance);
+                    if (slowfoodchance == 5)
                     {
                         slowfood = foodCreator.CraeteSlowFood();
                         slowfood.Draw();
                             } 
+                    if (dangerfoodchance==2)
+                        {
+                        Console.WriteLine(dangerfoodchance);
+                        dangerfood = foodCreator.CraeteDangerFood();
+                        dangerfood.Draw();
+                    }
                 }
 
                 else
@@ -90,8 +99,15 @@ namespace uusmang
                 {
                     _ = mainmusic.Natukene_mangida("../../../eatsound.mp3");
                     (speed,  oldspeed )= snake.SlowEat(speed);
-                    Console.WriteLine(speed);
                     pointsObject.ShowPointsOnDisplay(pointcounter, speed);
+                }
+
+                if(snake.SlowEatBool(dangerfood))
+                {
+                    _ = mainmusic.Natukene_mangida("../../../eatsound.mp3");
+                    endscreenObject.Showendscreen(Usersdict, nickname, pointcounter);
+                    break;
+
                 }
 
                 if (pointcounter % 5==0 && pointcounter > 0)

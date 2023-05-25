@@ -37,11 +37,27 @@ namespace uusmang
             return new Point(x, y, sym);
         }
 
-        public int SpawnChance()
+        public Point CraeteDangerFood()
+        {
+            int x = random.Next(2, mapWidth - 2);
+            int y = random.Next(2, mapHeight - 2);
+            Console.ForegroundColor = ConsoleColor.Red;
+            char sym = '$';
+            return new Point(x, y, sym);
+        }
+
+        public int SlowFoodSpawnChance()
         {
             int randnumber = random.Next(1,6);
             return randnumber;
         }
+
+        public int DangerFoodSpawnChance()
+        {
+            int randnumber = random.Next(1, 11);
+            return randnumber;
+        }
+
     }
     
 }
