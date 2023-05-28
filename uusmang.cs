@@ -29,8 +29,13 @@ namespace uusmang
             SnakeColor colorObject = new SnakeColor();
             string color = colorObject.ChooseColor();
             pointsObject.ReadToFile(Usersdict);
+            pointsObject.DeleateAnonim(Usersdict);
             pointsObject.ShowLeaderboard10(Usersdict);
             string nickname = pointsObject.NicknameCreation();
+            while (pointsObject.Checkkdublicatenickanme(nickname,Usersdict))
+            {
+                nickname = pointsObject.NicknameCreation();
+            }
             for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine("Game start in {0}", 3-i);
@@ -75,7 +80,6 @@ namespace uusmang
                     pointsObject.ShowPointsOnDisplay(pointcounter, speed);
                     int slowfoodchance = foodCreator.SlowFoodSpawnChance();
                     int dangerfoodchance = foodCreator.DangerFoodSpawnChance();
-                    Console.WriteLine(dangerfoodchance);
                     if (slowfoodchance == 5)
                     {
                         slowfood = foodCreator.CraeteSlowFood();

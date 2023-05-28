@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace uusmang
@@ -120,10 +121,10 @@ namespace uusmang
         {
             try
             {
-                Console.WriteLine("Write Nickname");
+                Console.WriteLine("Write Nickname(more than 3 characters and less than 20 characters)");
                 string nickname = Console.ReadLine();
 
-                if (nickname.Length < 20)
+                if (nickname.Length < 20 && nickname.Length > 3)
                 {
                     return nickname;
                 }
@@ -134,13 +135,43 @@ namespace uusmang
             }
             catch (Exception ex)
             {
-                Console.WriteLine("You ncikname is Anonim");
+                Console.WriteLine("Wrong nickname, now your name is Anonim");
                 string nickname;
-                nickname = "anonioim";
+                nickname = "Anonim";
                 return nickname; 
             }
         }
-    } }
+        public bool Checkkdublicatenickanme(string nickname, Dictionary<string, int> esimine)
+        { 
+            if (esimine.ContainsKey(nickname))
+            {
+                Console.WriteLine();
+                Console.WriteLine("Another user has this nickname");
+                Console.WriteLine();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void DeleateAnonim(Dictionary<string, int> esimine)
+        {
+            string Anonim = "Anonim";
+            if (esimine.ContainsKey(Anonim))
+            {
+                esimine.Remove(Anonim);
+            }
+
+            else
+            {
+
+            }
+
+        }
+    }
+}
 
     
 

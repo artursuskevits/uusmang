@@ -58,9 +58,9 @@ namespace uusmang
             }
             }
             catch {
-                Console.WriteLine("Wrong, you play with yellow color");
+                Console.WriteLine("Wrong number, you play with black color");
                 string snakecolor;
-                snakecolor = "Yellow";
+                snakecolor = "Balck";
                 return snakecolor;
             }
         }
